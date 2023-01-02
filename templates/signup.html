@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-2">
+  <h3 class="px-5 lead text-danger">Sign up</h3>
+    <div class="col-12 col-md-5 px-5">
+    <form action="/signup" method="post" class="ms-5">
+      <div class="mb-3">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control w-50" id="firstName" name="firstName" required>
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control w-50" id="lastName" name="lastName" required>
+          </div>
+      <label for="InputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control w-50" id="InputEmail1" aria-describedby="emailHelp" name="InputEmail1" required>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control w-50" id="InputPassword1" name="InputPassword1" required>
+    </div>
+    <div class="mb-3">
+        <label for="reInputPassword1" class="form-label">Re-type Password</label>
+        <input type="password" class="form-control w-50" id="reInputPassword1" name="reInputPassword1" required>
+      </div>
+    <button type="submit" class="btn btn-outline-primary mb-3">Submit</button><br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <span class="alert alert-{{ category }} mt-3">{{ message }}</span>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </form>
+</div>
+<div class="col-12 col-md-7 my-5 p-5">
+  <h3>Sign up</h3>
+  <p class="lead">Please Pay Attention To The Following Points When Registering</p>
+  <p>-First Name and Last Name Accept Only Letters, Space, And Dots For Upper And Lower Case Letters</p>
+  <p>-Email Must Be Unique</p>
+  <p>-Choose Strong Password Patterns</p>
+  <img src="{{url_for('static', filename='2022-10-03.png')}}" alt="image" class="img-fluid  mt-5 pt-5 d-none d-md-block" width="150">
+</div>
+</div> 
+{% endblock %}
+
+

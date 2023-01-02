@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container ">
+<h3 >Update</h3>
+<div class="row">
+    <div class="col-12 col-md-6 p-5 mb-5">
+    <form action="/updateBook" method="post">
+      <div class="mb-3">
+        <label for="id" class="form-label text-danger">ID</label>
+        <input type="number" class="form-control w-50" id="id" name="id" value="{{book_id}}" readonly>
+      </div>
+    <div class="mb-3">
+      <label for="title" class="form-label text-danger">title</label>
+      <input type="text" class="form-control w-50" id="title" name="title" value="{{title}}">
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label text-danger">Author</label>
+        <input type="text" class="form-control w-50" id="author" name="author" value="{{author}}">
+      </div>
+      <div class="mb-3">
+        <label for="publisher" class="form-label text-danger">Publisher</label>
+        <input type="publisher" class="form-control w-50" id="publisher" name="publisher" value="{{publisher}}">
+      </div>
+      <div class="mb-3">
+        <label for="language" class="form-label text-danger">Language</label>
+        <input type="language" class="form-control w-50" id="language" name="language" value="{{language}}" >
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label text-danger">Category</label>
+        <input type="text" class="form-control w-50" id="category" name="category" value="{{category}}">
+      </div>
+      <div class="mb-3">
+        <label for="url" class="form-label text-danger">url</label>
+        <input type="url" class="form-control w-50" id="url" name="url" value="{{book_cover}}" required>
+      </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+<div class="col-12 col-md-6">
+  <div>update books</div> 
+      <img src="{{book_cover}}"  width="350" >
+</div>
+</div> 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <span class=" ms-4 alert alert-{{ category }}">{{ message }}</span>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</div>
+
+{% endblock %}
+
+

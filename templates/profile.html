@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container w-100 h-100 mt-5">
+    <div class="row">
+        <div class="col-12 col-md-6"> 
+            <h1 class=" animate-charcter">Welcome</h1>
+            <p class="mt-5">-Hello : <span class="text-danger lead text-uppercase">{{username}}</span></p>
+            <p>-You joined at: <span class="text-info text-uppercase">{{joined}}</span></p>
+            <p>- Please For Viewing Our Book Collections,<span class="text-success">Visit VIEW</span></p></div>
+        <div class="col-12 col-md-6">
+            <img src="{{url_for('static', filename='2022-10-03 (4).png')}}" alt="image" class="img-fluid img-thumbnail" width="800">
+        </div>
+    </div>
+
+</div>
+{% endblock %}

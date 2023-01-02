@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <table class="table border">
+    <thead>
+      <tr>
+        <th scope="col">Book Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Language</th>
+        <th scope="col">Category</th>
+        <th scope="col">Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+      <tr>
+        <td>{{book["book_id"]}}</td>
+        <td>{{book["title"]}}</a></td>
+        <td>{{book["author"]}}</td>
+        <td>{{book["publisher"]}}</td>
+        <td>{{book["language"]}}</td>
+        <td>{{book["category"]}}</td>
+        <td>{{dueDate}}</td>
+        {% if "user" in session: %}
+        <td><a href="{{ url_for('returnBook', book_id = book['book_id'] )}}">Return</a></td>
+        {% endif %}
+      </tr>
+      </tr>
+      {% endfor %}
+    </tbody>
+</div>
+  </table>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-2">
+  <div class="d-flex justify-content-between mb-3">
+    <span class="h1">Books</span>
+  <form action="/view" method="post">
+    <input type="text" name="search" id="search" name="search" placeholder="Search...." required>
+    <input type="submit" value="search..." class="btn  btn-outline-primary text-dark border border-dark">
+  </form>
+  </div>
+<table class="table border">
+    <thead>
+      {% if "admin" in session: %}
+      <form action="/add" method="post" class="d-flex">
+      <tr>
+        <th scope="col">  
+           <div class="mb-3">
+          <label for="id" class="form-label text-danger">ID</label>
+          <input type="text" class="form-control" id="id" name="id" required>
+        </div>
+      </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="title" class="form-label text-danger">Title</label>
+            <input type="text" class="form-control " id="title" name="title" required>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="author" class="form-label text-danger">Author</label>
+            <input type="text" class="form-control " id="author" name="author" required>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="publisher" class="form-label text-danger">Publisher</label>
+            <input type="publisher" class="form-control " id="publisher" name="publisher" required>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="language" class="form-label text-danger">Language</label>
+            <input type="language" class="form-control " id="language" name="language" required>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="category" class="form-label text-danger">Category</label>
+            <input type="text" class="form-control " id="category" name="category" required>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="mb-3">
+            <label for="url" class="form-label text-danger">URL</label>
+            <input type="url" class="form-control " id="url" name="url" >
+          </div>
+          <th scope="col">  
+            <div class="mb-3">
+             <button type="submit" class="btn btn-outline-primary">Add</button>
+            </div>
+          </th>
+        </th>
+      </tr>
+      </form>
+      {% endif %}
+      <tr>
+        <th scope="col"> Book Id</th>
+        <th scope="col"> Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Language</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+      <tr>
+        <td><a href="{{ url_for('viewBook', book_id = book['book_id'] )}}">{{book["book_id"]}}</a></td>
+        <td>{{book["title"]}}</a></td>
+        <td>{{book["author"]}}</td>
+        <td>{{book["publisher"]}}</td>
+        <td>{{book["language"]}}</td>
+        <td>{{book["category"]}}</td>
+        {% if "admin" in session: %}
+        <td><a href="{{ url_for('update', book_id = book['book_id'] )}}" class="text-info">Update</a></td>
+        <td><a href="{{ url_for('delete', book_id = book['book_id'] )}}" class="text-danger">Delete</a></td>
+        {% endif %}
+        {% if "user" in session: %}
+        <td><a href="{{ url_for('borrowBook', book_id = book['book_id'] )}}">Borrow</a></td>
+        <td><a href="{{ url_for('returnBook', book_id = book['book_id'] )}}">Return</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+    <div class="container mt-5">
+       <span class="alert alert-{{ category }}">{{ message }}</span>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock %}

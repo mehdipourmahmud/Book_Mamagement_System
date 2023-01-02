@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-5">
+  <h3 class="px-5 lead text-danger">Log in</h3>
+    <div class="col-12 col-md-5 p-5">
+    <form action="/login" method="post" class="ms-5">
+      <div class="mb-3">
+      <label for="InputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control w-50" name="InputEmail1" id="InputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="InputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control w-50" id="InputPassword1" name="InputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="admin" class="form-label text-danger">Admin only</label>
+      <input type="password" class="form-control w-50" id="admin" name="admin">
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Enter</button>
+  </form>
+  <a class="ms-5" href="{{ url_for('signup')}}">You do not have an account yet?</a>
+</div>
+<div class="col-12 col-md-7">
+  <img src="{{url_for('static', filename='micah-williams-lmFJOx7hPc4-unsplash.jpg')}}" alt="image" class="img-fluid img-thumbnail" width="700">
+   </div>
+</div> 
+<div class="ms-5">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <span class=" ms-4 alert alert-{{ category }}">{{ message }}</span>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</div>
+
+{% endblock %}
+
+

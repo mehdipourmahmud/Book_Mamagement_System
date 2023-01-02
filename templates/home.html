@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container w-100 h-100 mt-5">
+    <div class="row">
+        <div class="col-12 col-md-5">
+             <h1 class=" animate-charcter"><strong > Australian Library</strong></h1> 
+             <hr>
+             <p class="lead">A Library Management System is software that provides the ability to find books, manage books, track borrowed books, managing fines and bills all in one place. It helps the librarian manage the books and books borrowed by members and automates most of the library activities.</p>
+             <hr>
+             <img src="{{url_for('static', filename='2022-10-03 (1).png')}}" alt="image" class="img-fluid img-thumbnail mt-5 pt-5 d-none d-md-block" width="200">
+        </div>
+        <div class="col-12 col-md-7">
+            <img src="{{url_for('static', filename='pexels-janko-ferlic-590493.jpg')}}" alt="logo" class="img-fluid img-thumbnail shadow  " width="800">
+        </div>
+    </div>
+</div>
+{% endblock %}

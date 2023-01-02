@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block header %}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/style.css">
+<title>Australian Library</title>
+<nav class="navbar navbar-expand-lg bg-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand"  href="{{ url_for('home') }}"><img src="{{url_for('static', filename='2022-10-01 (5).png')}}" alt="image" class="img-fluid" width="200">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="{{ url_for('home') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About us</a>
+          </li>
+          {% if not "admin"  in session and not "user" in  session: %}
+
+          <li class="nav-item">
+            <a class="nav-link"  href="{{ url_for('login') }}">Login</a>
+          </li>
+          {% endif %}
+          {% if not "admin"  in session and not "user" in  session: %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('signup') }}">Sign up</a>
+          </li>
+          {% endif %}
+
+          {% if "admin" in session or "user" in session: %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('view') }}">View Books</a>
+          </li>
+          {% endif %}
+          {% if "user" in session: %} 
+          <li class="nav-item">
+            <a class="nav-link"  href="{{ url_for('borrowedBooks') }}">Your Books</a>
+          </li> 
+          {% endif %} 
+          <li class="nav-item">
+            <a class="nav-link"  href="{{ url_for('contact') }}">Contact us</a>
+          </li> 
+          {% if "admin" in session or "user" in session: %}
+           <li class="nav-item">
+            <a class="nav-link"  href="{{ url_for('logout') }}">Log out</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+{% block content %}
+{% endblock %}
+<footer class="text-white text-center mt-5 py-3"><div>&copy; 2022 - 2022 Australian Library</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</html>
+
+
+
+
+
+

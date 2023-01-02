@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container w-100 h-100 mt-5">
+    <div class="row">
+        <div class="col-12 col-md-5">
+             <h1 class=" animate-charcter"><strong > Contact</strong></h1> 
+             <hr>
+             <p class="lead">The Library holds the greatest collection in the world of material relating to Australia and the Australian people. It ranges from the earliest European works about the Great Southern Land to the most current publications.            </p>
+             <a class="btn btn-outline-danger mt-2" aria-current="page"  href="{{ url_for('home') }}">Home</a><br>
+             <img src="{{url_for('static', filename='2022-10-03.png')}}" alt="image" class="img-fluid mt-5 pt-5 d-none d-md-block" width="100">
+            </div>
+        <div class="col-12 col-md-7">
+            <img src="{{url_for('static', filename='nordwood-themes-q8U1YgBaRQk-unsplash.jpg')}}" alt="image" class="img-fluid img-thumbnail" width="800">
+        </div>
+    </div>
+</div>
+{% endblock %}
